@@ -1,0 +1,18 @@
+/* This adds a pow(base, power) function to  your script if you need a float power in your calculations. 
+   This is only an approximate, use precision to control how accurate it will be */
+   
+    float sqr(float x) {
+        return x * x;
+    }
+
+    float pow(float base, float power, float precision) {   
+        if(power < 0) return 1 / pow(base, -power, precision);
+        if(power >= 10) return sqr(pow(base, power / 2, precision / 2 ));
+        if(power >= 1) return base * pow(base, power - 1, precision);
+        if(precision >= 1) return Math.Sqrt(base);
+        return Math.Sqrt(pow(base, power * 2, precision * 2));
+    }
+
+    float pow(float base, float power) { 
+        return pow(base, power, 0.00001); 
+    }
